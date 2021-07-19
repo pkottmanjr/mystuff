@@ -1,0 +1,129 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mystuff}[2021/07/19 My Stuff]
+
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+
+% Language-specific stuff
+
+\DeclareOption{sk}{
+	\theoremstyle{definition}
+	\newtheorem*{definition}{Definícia}
+	\newtheorem{exercise}{Úloha}
+	\theoremstyle{remark}
+	\newtheorem*{remark}{Poznámka}
+	\theoremstyle{plain}
+	\newtheorem{theorem}{Veta}
+	\newtheorem{lemma}{Lemma}
+	\newtheorem{corollary}{Dôsledok}[theorem]
+
+	\newcommand\konst{\text{konšt.}}
+}
+
+\DeclareOption{en}{
+	\theoremstyle{definition}
+	\newtheorem*{definition}{Definition}
+	\newtheorem{exercise}{Exercise}
+	\newtheorem{example}{Example}[section]
+	\theoremstyle{remark}
+	\newtheorem*{remark}{Remark}
+	\theoremstyle{plain}
+	\newtheorem{theorem}{Theorem}[section]
+	\newtheorem{lemma}{Lemma}[section]
+	\newtheorem{corollary}{Corollary}[theorem]
+
+	\newcommand\const{\text{const.}}
+	\newcommand{\wrt}{with respect to {}}
+	\newcommand{\st}{such that {}}
+}
+
+% Bold vector notation, cartesian, cylindrical, and spherical basis vector fields
+
+\DeclareOption{boldvec}{
+	\newcommand\vbg[1]{\boldsymbol{#1}}
+	\newcommand\vb[1]{\mathbf{#1}}
+	\newcommand\ex{\vb{e}_x}
+	\newcommand\ey{\vb{e}_y}
+	\newcommand\ez{\vb{e}_z}
+	\newcommand\eR{\vb{e}_R}
+	\newcommand\er{\vb{e}_r}
+	\newcommand\ephi{\vb{e}_\phi}
+	\newcommand\etheta{\vb{e}_\theta}
+}
+
+\ProcessOptions\relax
+
+% Paired delimiters
+\DeclarePairedDelimiterX\norm[1]\lVert\rVert{\ifblank{#1}{\:\cdot\:}{#1}} % Norm
+\DeclarePairedDelimiterX\abs[1]\lvert\rvert{\ifblank{#1}{\:\cdot\:}{#1}} % Absolute value
+\DeclarePairedDelimiterX\duality[3]{\langle}{\rangle}{#1 \delimsize\vert #2 \delimsize\vert #3} % Duality/inner product
+
+% Derivatives
+\newcommand\dv[3][]{\frac{\mathrm{d}^{#1} #2}{\mathrm{d}#3^{#1}}} % One-variable or total derivative
+\newcommand\pdv[3][]{\frac{\partial^{#1} #2}{\partial #3^{#1}}} % Partial derivative
+\newcommand\dd[1]{\,\mathrm{d}#1} % Differential
+
+% Vector analysis operators
+\newcommand\grad{\nabla} % Gradient
+\newcommand\lap{\Delta} % Laplacian
+\let\div\undefined
+\DeclareMathOperator\div{div} % Divergence
+\DeclareMathOperator\rot{rot} % Curl
+\DeclareMathOperator\Div{Div} % Surface divergence
+\DeclareMathOperator\Rot{Rot} % Surface curl
+
+% Miscellaneous operators
+\let\Re\undefined
+\let\Im\undefined
+\DeclareMathOperator\sgn{sgn} % Sign
+\DeclareMathOperator\supp{supp} % Support
+\DeclareMathOperator\dist{dist} % Distance
+\DeclareMathOperator\card{card} % Cardinality
+\DeclareMathOperator\Re{Re} % Real part
+\DeclareMathOperator\Im{Im} % Imaginary part
+\DeclareMathOperator\Tr{Tr} % Trace
+
+% Number sets
+\newcommand\R{\mathbb{R}} % Real numbers
+\newcommand\C{\mathbb{C}} % Complex numbers
+\newcommand\N{\mathbb{N}} % Natural numbers
+\newcommand\Z{\mathbb{Z}} % Integers
+
+% Miscellaneous
+\renewcommand{\_}[1]{_{\mathrm{#1}}} % Upright subscript
+\newcommand\e{\mathrm{e}} % Euler's number
+\newcommand\iu{\mathrm{i}} % Imaginary unit
+\renewcommand\epsilon{\varepsilon} % This should be done automatically
+\renewcommand\tilde{\widetilde} % Wider tilde
+\renewcommand\bar{\overline} % Wider bar
+% \newcommand\jump[1]{[\![#1]\!]} % Jump bracket
+
+% Bracket macros - OBSOLETE with VS Code & LaTeX Workshop
+% \newcommand\lp{\left(} % Left parenthesis
+% \newcommand\rp{\right)} % Right parenthesis
+% \newcommand\lb{\left[} % Left bracket
+% \newcommand\rb{\right]} % Right bracket
+% \newcommand\set[1]{\left\{ #1 \right\}} % Dynamically scaled curly braces
+
+% Theorem environment macros - OBSOLETE with VS Code & LaTeX Workshop
+% \newcommand\df[2][]{\begin{definition}[#1]#2\end{definition}}
+% \newcommand\thm[2][]{\begin{theorem}[#1]#2\end{theorem}}
+% \newcommand\cor[2][]{\begin{corollary}[#1]#2\end{corollary}}
+% \newcommand\lm[2][]{\begin{lemma}[#1]#2\end{lemma}}
+% \newcommand\dk[1]{\begin{proof}#1\end{proof}}
+% \newcommand\rem[1]{\begin{remark}#1\end{remark}}
+
+% Equation environment macros - OBSOLETE with VS Code & LaTeX Workshop
+% \newcommand\eq[2][*]{\begin{equation#1} #2\end{equation#1}}
+% \newcommand\gt[2][*]{\begin{gather#1} #2\end{gather#1}}
+% \newcommand\ml[2][*]{\begin{multline#1} #2\end{multline#1}}
+% \newcommand\al[2][*]{\begin{align#1} #2\end{align#1}}
+
+% Matrix macros - OBSOLETE with VS Code & LaTeX Workshop
+% \renewcommand\matrix[1]{\begin{pmatrix} #1
+% \end{pmatrix}}
+% \newcommand\dmat[1]{\begin{vmatrix} #1
+% \end{vmatrix}}
