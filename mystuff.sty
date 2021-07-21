@@ -59,7 +59,7 @@
 % Paired delimiters
 \DeclarePairedDelimiterX\norm[1]\lVert\rVert{\ifblank{#1}{\:\cdot\:}{#1}} % Norm
 \DeclarePairedDelimiterX\abs[1]\lvert\rvert{\ifblank{#1}{\:\cdot\:}{#1}} % Absolute value
-\DeclarePairedDelimiterX\duality[3]{\langle}{\rangle}{#1 \delimsize\vert #2 \delimsize\vert #3} % Duality/inner product
+\DeclarePairedDelimiterX\duality[2]{\langle}{\rangle}{#1 , #2} % Duality/inner product
 
 % Derivatives
 \newcommand\dv[3][]{\frac{\mathrm{d}^{#1} #2}{\mathrm{d}#3^{#1}}} % One-variable or total derivative
