@@ -6,6 +6,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{mathtools}
+\RequirePackage{bm}
 \RequirePackage{etoolbox}
 
 % Language-specific stuff
@@ -45,7 +46,7 @@
 % Bold vector notation, cartesian, cylindrical, and spherical basis vector fields
 
 \DeclareOption{boldvec}{
-	\newcommand\vbg[1]{\boldsymbol{#1}}
+	\newcommand\vbg[1]{\bm{#1}}
 	\newcommand\vb[1]{\mathbf{#1}}
 	\newcommand\ex{\vb{e}_x}
 	\newcommand\ey{\vb{e}_y}
